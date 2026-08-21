@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>react</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Puente global expuesto al ejecutor injectJavaScript de React Native
+      window.receiveFromNative = function(jsonString) {
+        try {
+          const parsed = typeof jsonString === 'string' ? JSON.parse(jsonString) : jsonString;
+          const event = new CustomEvent('NativeBridgeMessage', { detail: parsed });
+          window.dispatchEvent(event);
+        } catch (e) {
+          console.error("Error parseando inyección nativa:", e);
+        }
+      };
+    </script>
+  </body>
+</html>
