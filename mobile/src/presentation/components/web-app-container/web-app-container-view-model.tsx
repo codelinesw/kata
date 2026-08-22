@@ -1,4 +1,5 @@
 import { RootState } from "@infrastructure/store/store";
+import { updateCurrentAmount } from "../../../presentation/storage/savingsSlice";
 import { WebViewMessageEvent } from "react-native-webview";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -30,8 +31,14 @@ export const useWebAppContainerViewModel = (webViewRef: React.RefObject<any>, go
                     JSON.stringify(message)
                 );
             }
+
+            if (rawData && rawData.type === "RECORD_PAYMENT") {
+                dispatch(updateCurrentAmount({ goalId: rawData.payload.goalId, amount: rawData.payload.amount }));
+            }
         }
     }
+
+
 
     const sendUserToWeb = () => {
     };

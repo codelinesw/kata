@@ -29,8 +29,18 @@ export const savingsSlice = createSlice({
         goal.currentAmount += amount;
       }
     },
+    updateCurrentAmount: (
+      state,
+      action: PayloadAction<{ goalId: string; amount: number }>
+    ) => {
+      const { goalId, amount } = action.payload;
+      const goal = state.goals.find((g) => g.id === goalId);
+      if (goal && amount >= 0) {
+        goal.currentAmount = goal.currentAmount + amount;
+      }
+    },
   },
 });
 
-export const { selectGoal, addDeposit } = savingsSlice.actions;
+export const { selectGoal, addDeposit, updateCurrentAmount } = savingsSlice.actions;
 export default savingsSlice.reducer;

@@ -59,6 +59,19 @@ export default function App(): React.JSX.Element {
     };
   }, []);
 
+  const addPayment = (amount: number) => {
+    console.error("miguel angel...");
+    window.ReactNativeWebView?.postMessage(
+      JSON.stringify({
+        type: "RECORD_PAYMENT",
+        payload: {
+          goalId: authState?.goalData?.id,
+          amount: amount
+        }
+      })
+    );
+  }
+
   if (authState.loading) {
     return (
       <div style={styles.container}>
@@ -82,6 +95,7 @@ export default function App(): React.JSX.Element {
       name={authState?.goalData?.name || ""}
       currentAmount={authState?.goalData?.currentAmount || 0}
       targetAmount={authState?.goalData?.targetAmount || 0}
+      addPayment={(amount: number) => addPayment(amount)}
     />
   );
 }
