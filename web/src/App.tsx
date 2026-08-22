@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { sendToNative, listenFromNative } from './bridge/nativeBridge';
-import { type UserSession, type BridgeMessage } from './types/bridge';
+import { type UserSession, type GoalData } from './types/bridge';
+import { GoalDetailScreen } from './presentation/screens/goal-detail-screen';
+
 
 interface AuthState {
   loading: boolean;
   authenticated: boolean;
   user: UserSession | null;
   token: string | null;
+  goalData: GoalData | null
 }
 
 export default function App(): React.JSX.Element {
@@ -15,35 +17,53 @@ export default function App(): React.JSX.Element {
     authenticated: false,
     user: null,
     token: null,
+    goalData: null
   });
 
   useEffect(() => {
-    // 1. Escuchar la respuesta del Shell Nativo
-    const unsubscribe = listenFromNative((data: BridgeMessage) => {
-      if (data.type === 'HU01_SESSION_RESPONSE') {
-        if (data.payload?.token && data.payload?.user) {
+
+    const handleMessage = (event: any) => {
+
+      try {
+        const message = JSON.parse(event.data);
+        if (message.type === "SAY_SON_GOKU") {
           setAuthState({
             loading: false,
             authenticated: true,
-            user: data.payload.user,
-            token: data.payload.token,
-          });
-        } else {
-          setAuthState({ loading: false, authenticated: false, user: null, token: null });
+            user: null,
+            token: null,
+            goalData: message.payload
+          })
         }
+      } catch (error) {
+        console.error("Ha ocurrido un error capturando la información del bolsillo");
       }
-    });
+    };
 
-    // 2. Disparar handshake de inicio de sesión al Shell Nativo
-    sendToNative('HU01_INIT_SESSION', { clientVersion: '1.0.0-vite-ts' });
+    document.addEventListener(
+      "message",
+      handleMessage
+    );
 
-    return () => unsubscribe();
+    window.ReactNativeWebView?.postMessage(
+      JSON.stringify({
+        type: "READY",
+      })
+    );
+
+    return () => {
+      document.removeEventListener(
+        "message",
+        handleMessage
+      );
+    };
   }, []);
 
   if (authState.loading) {
     return (
       <div style={styles.container}>
         <h3>Iniciando Handshake Seguro con Shell Nativo...</h3>
+        <pre>{JSON.stringify(authState, null, 2)}</pre>
       </div>
     );
   }
@@ -58,9 +78,11 @@ export default function App(): React.JSX.Element {
   }
 
   return (
-    <div style={styles.container}>
-      <h2>Micro-App Web (Vite + React + TS)</h2>
-    </div>
+    <GoalDetailScreen 
+      name={authState?.goalData?.name || ""}
+      currentAmount={authState?.goalData?.currentAmount || 0}
+      targetAmount={authState?.goalData?.targetAmount || 0}
+    />
   );
 }
 
