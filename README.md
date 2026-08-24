@@ -69,7 +69,7 @@ El estado global de la aplicación reside en el Native Shell mediante `@reduxjs/
 
 ## Estructura del repositorio
 
----
+```
         |----mobile: Carpeta donde se almacena todo el proyecto RN todo las fuentes y estructura de carpetas
                 |---- src
                        |---- bridge
@@ -118,8 +118,7 @@ El estado global de la aplicación reside en el Native Shell mediante `@reduxjs/
         |---- libreria: (Este está incompleto no se logró incorporar)
         |---- Tests y agente: (archivos con el agente y los skills)
 
-
----
+```
 
 ## Requisitos
 
@@ -158,9 +157,7 @@ cd mobile
 npm run android
 ```
 
----
 ## Testing
----
 Mobile Tests (Jest):
 cd mobile
 npm run test
