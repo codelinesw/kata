@@ -69,51 +69,54 @@ El estado global de la aplicación reside en el Native Shell mediante `@reduxjs/
 
 ## Estructura del repositorio
 
+---
+        |----mobile: Carpeta donde se almacena todo el proyecto RN todo las fuentes y estructura de carpetas
+                |---- src
+                       |---- bridge
+                       |---- domain
+                            |---- entities
+                            |---- interfaces
+        
+                       |---- infrastructure
+                            |--- store
+                                |--- store.ts
+        
+                       |---- presentation
+                            |---- components
+                                    |---- goal-item
+                                            |---- goal-item-component.tsx
+                                            |---- goal-item-style.tsx
+                                    |---- web-app-container
+                                            |---- web-app-container-component.tsx
+                                            |---- web-app-container-style.tsx
+                                            |---- web-app-view-model.tsx
+                            |---- props
+                            |---- screens
+                            |---- storage
+        
+                        |---- types
+                            |---- bridge.ts
+        |---- web
+                |---- src
+                       |---- bridge
+                       |---- domain
+                            |---- entities
+                            |---- interfaces
+        
+                       |---- presentation
+                            |---- components
+                                    |---- pop-up
+                                            |---- pop-up-component.tsx
+                                            |---- pop-up-style.tsx
+                            |---- props
+                                    |---- goal-detail.tsx
+                            |---- screens
+        
+                        |---- types
+                            |---- bridge.ts
+        
+        |---- libreria: (Este está incompleto no se logró incorporar)
+        |---- Tests y agente: (archivos con el agente y los skills)
 
-|----mobile: Carpeta donde se almacena todo el proyecto RN todo las fuentes y estructura de carpetas
-        |---- src
-               |---- bridge
-               |---- domain
-                    |---- entities
-                    |---- interfaces
 
-               |---- infrastructure
-                    |--- store
-                        |--- store.ts
-
-               |---- presentation
-                    |---- components
-                            |---- goal-item
-                                    |---- goal-item-component.tsx
-                                    |---- goal-item-style.tsx
-                            |---- web-app-container
-                                    |---- web-app-container-component.tsx
-                                    |---- web-app-container-style.tsx
-                                    |---- web-app-view-model.tsx
-                    |---- props
-                    |---- screens
-                    |---- storage
-
-                |---- types
-                    |---- bridge.ts
-|---- web
-        |---- src
-               |---- bridge
-               |---- domain
-                    |---- entities
-                    |---- interfaces
-
-               |---- presentation
-                    |---- components
-                            |---- pop-up
-                                    |---- pop-up-component.tsx
-                                    |---- pop-up-style.tsx
-                    |---- props
-                            |---- goal-detail.tsx
-                    |---- screens
-
-                |---- types
-                    |---- bridge.ts
-
-|---- libreria: (Este está incompleto no se logró incorporar)
-|---- Tests y agente: (archivos con el agente y los skills)
+---
