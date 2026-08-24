@@ -129,15 +129,14 @@ El estado global de la aplicación reside en el Native Shell mediante `@reduxjs/
   * Android SDK Platform 37 (compileSdk 37) 
   * Target SDK 36 
   * Build Tools 37.0.0 
-  * NDK 27.1.12297006 
-
----
+  * NDK 27.1.12297006
+    
 ## Instalación
----
 
 1. Clonar el repositorio.
 2. Instalar dependencias del proyecto Web:
 
+```
 cd web
 npm install
 
@@ -157,7 +156,7 @@ npm run start
 3. Ejecutar en Android
 cd mobile
 npm run android
-
+```
 
 ---
 ## Testing
