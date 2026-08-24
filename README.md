@@ -132,8 +132,8 @@ El estado global de la aplicación reside en el Native Shell mediante `@reduxjs/
   * NDK 27.1.12297006 
 
 ---
-
 ## Instalación
+---
 
 1. Clonar el repositorio.
 2. Instalar dependencias del proyecto Web:
@@ -158,9 +158,10 @@ npm run start
 cd mobile
 npm run android
 
----
 
+---
 ## Testing
+---
 Mobile Tests (Jest):
 cd mobile
 npm run test
