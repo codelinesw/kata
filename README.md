@@ -138,8 +138,6 @@ El estado global de la aplicación reside en el Native Shell mediante `@reduxjs/
 1. Clonar el repositorio.
 2. Instalar dependencias del proyecto Web:
 
----
-
 cd web
 npm install
 
