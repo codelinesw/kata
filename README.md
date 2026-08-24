@@ -120,3 +120,50 @@ El estado global de la aplicación reside en el Native Shell mediante `@reduxjs/
 
 
 ---
+
+## Requisitos
+
+* **Node.js:** `>= 22.11.0`[cite: 2]
+* **Java / JDK:** 17
+* **Android Studio & SDK:**
+  * Android SDK Platform 37 (compileSdk 37)[cite: 3]
+  * Target SDK 36[cite: 3]
+  * Build Tools 37.0.0[cite: 3]
+  * NDK 27.1.12297006[cite: 3]
+
+---
+
+## Instalación
+
+1. Clonar el repositorio.
+2. Instalar dependencias del proyecto Web:
+```bash
+cd web
+npm install
+
+cd ../mobile
+npm install
+
+## Ejecución
+
+1. Iniciar Microapp Web
+```bash
+cd web
+npm run dev
+
+2. Iniciar Metro Bundler Native
+```bash
+cd mobile
+npm run start
+
+3. Ejecutar en Android
+```bash
+cd mobile
+npm run android
+
+## Testing
+Mobile Tests (Jest):
+```bash
+cd mobile
+npm run test
+npm run test:coverage
