@@ -42,6 +42,11 @@ Mecanismo de abstracción de eventos y payloads. Garantiza que ambos entornos si
 ### Gestión del estado
 El estado global de la aplicación reside en el Native Shell mediante `@reduxjs/toolkit` `^2.12.0` y `react-redux` `^9.3.0`.
 
+## Diagramas de arquitecturas
+<img width="5608" height="8192" alt="image" src="https://github.com/user-attachments/assets/d03d149d-41de-4411-b89b-c75660bf4632" />
+<img width="8192" height="2111" alt="image" src="https://github.com/user-attachments/assets/72bbb3fc-c416-4731-a600-c8f38e799275" />
+
+
 ---
 
 ## Tecnologías
